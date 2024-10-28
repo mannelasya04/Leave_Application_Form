@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leave Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .error {
+            color: red;
+        }
+        h1{
+            text-align: center;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group label {
+    margin-right: 10px;
+}
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        
+        }
+        .submit-button{
+    text-align: center;
+    margin-top: 20px; 
+}
+    </style>
+</head>
+<body>
+    <h1>Leave Application Form</h1>
+    <form id="leaveForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span id="nameError" class="error"></span>
+
+        <label for="rollNumber">Roll Number:</label>
+        <input type="text" id="rollNumber" name="rollNumber" required>
+        <span id="rollNumberError" class="error"></span>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+        <span id="startDateError" class="error"></span>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+        <span id="endDateError" class="error"></span>
+
+        <label for="reason">Reason for Leave:</label>
+        <textarea id="reason" name="reason" required></textarea>
+        <span id="reasonError" class="error"></span>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            // Name validation
+            const name = document.getElementById("name").value;
+            if (name === "") {
+                document.getElementById("nameError").textContent = "Please enter your name.";
+                isValid = false;
+            } else {
+                document.getElementById("nameError").textContent = "";
+            }
+
+            // Roll Number validation
+            const rollNumber = document.getElementById("rollNumber").value;
+            if (rollNumber === "") {
+                document.getElementById("rollNumberError").textContent = "Please enter your roll number.";
+                isValid = false;
+            } else {
+                document.getElementById("rollNumberError").textContent = "";
+            }
+
+            // Start Date validation
+            const startDate = document.getElementById("startDate").value;
+            if (startDate === "") {
+                document.getElementById("startDateError").textContent = "Please select a start date.";
+                isValid = false;
+            } else {
+                document.getElementById("startDateError").textContent = "";
+            }
+
+            // End Date validation
+            const endDate = document.getElementById("endDate").value;
+            if (endDate === "") {
+                document.getElementById("endDateError").textContent = "Please select an end date.";
+                isValid = false;
+            } else {
+                document.getElementById("endDateError").textContent = "";
+            }
+
+            // Reason validation
+            const reason = document.getElementById("reason").value;
+            if (reason === "") {
+                document.getElementById("reasonError").textContent = "Please enter a reason for leave.";
+                isValid = false;
+            } else {
+                document.getElementById("reasonError").textContent = "";
+            }
+
+            if (isValid) {
+                alert("Leave application submitted successfully!");
+                // You can add code here to send the form data to a server or database
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
